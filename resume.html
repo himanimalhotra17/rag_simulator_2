@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himani Malhotra | Futuristic Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #071018;
+      --panel: rgba(15, 26, 36, 0.75);
+      --panel-border: rgba(0, 255, 204, 0.12);
+      --primary: #00f5c4;
+      --secondary: #66a6ff;
+      --text: #f5f7fa;
+      --muted: #9db1c1;
+      --glow: 0 0 30px rgba(0, 245, 196, 0.25);
+      --gradient: linear-gradient(135deg, #00f5c4 0%, #66a6ff 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, rgba(0,245,196,0.08), transparent 30%),
+                  radial-gradient(circle at bottom right, rgba(102,166,255,0.1), transparent 25%),
+                  var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: auto;
+      padding: 40px 0 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      min-height: 95vh;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      backdrop-filter: blur(18px);
+      border-radius: 28px;
+      box-shadow: var(--glow);
+    }
+
+    .hero-card {
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(0,245,196,0.22), transparent 70%);
+      top: -100px;
+      right: -120px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      color: var(--primary);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      margin-bottom: 18px;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .tag {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dbe7f0;
+      font-size: 0.92rem;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #03131b;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,245,196,0.2);
+    }
+
+    .profile-card {
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::after {
+      content: "AI + Product";
+      position: absolute;
+      right: -30px;
+      bottom: 24px;
+      transform: rotate(-90deg);
+      color: rgba(255,255,255,0.08);
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+    }
+
+    .profile-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #00f5c4, #66a6ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #02151c;
+      margin-bottom: 28px;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .info-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    section {
+      margin-top: 80px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 48px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--gradient);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      padding: 28px;
+      transition: 0.35s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,245,196,0.3);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 22px;
+      padding: 28px;
+      align-items: start;
+    }
+
+    .timeline-year {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content h4 {
+      font-size: 0.95rem;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .timeline-content ul {
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-box {
+      padding: 22px;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .progress {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--gradient);
+      animation: load 2s ease forwards;
+    }
+
+    @keyframes load {
+      from { width: 0; }
+    }
+
+    .project-highlight {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,245,196,0.08), transparent 40%);
+      pointer-events: none;
+    }
+
+    .project-badge {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0,245,196,0.1);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 90px;
+      text-align: center;
+      color: var(--muted);
+      padding-bottom: 50px;
+    }
+
+    .floating-orb {
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,245,196,0.14), transparent 70%);
+      top: 20%;
+      right: -120px;
+      filter: blur(10px);
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .profile-card {
+        padding: 32px;
+      }
+
+      h1 {
+        font-size: 3.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+  <div class="floating-orb"></div>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-card glass">
+        <div class="eyebrow">
+          <span>●</span>
+          AI-Driven Product & Business Analyst
+        </div>
+
+        <h1>
+          Himani <br>
+          <span class="gradient-text">Malhotra</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Product-minded analyst blending AI, business strategy, and user-centric thinking to build impactful digital experiences. Passionate about turning ambiguity into structured solutions, insights, and scalable products.
+        </p>
+
+        <div class="tag-row">
+          <div class="tag">Product Strategy</div>
+          <div class="tag">AI & Analytics</div>
+          <div class="tag">Business Operations</div>
+          <div class="tag">UX Thinking</div>
+          <div class="tag">Data Storytelling</div>
+        </div>
+
+        <div class="cta-row">
+          <a href="mailto:yourmail@example.com" class="btn btn-primary">Contact Me</a>
+          <a href="https://linkedin.com" target="_blank" class="btn btn-secondary">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="profile-card glass">
+        <div class="profile-avatar">HM</div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Current Focus</div>
+            <div class="info-value">AI Product & Business Analysis</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Core Strength</div>
+            <div class="info-value">Structured Problem Solving</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Key Domain</div>
+            <div class="info-value">Healthcare + AI Products</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">Location</div>
+            <div class="info-value">Delhi, India</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Professional Snapshot</h2>
+
+      <div class="cards">
+        <div class="card glass">
+          <h3>AI Product Thinking</h3>
+          <p>
+            Experienced in conceptualizing AI-powered workflows, user journeys, and healthcare-focused digital experiences with a strong emphasis on usability and impact.
+          </p>
+        </div>
+
+        <div class="card glass">
+          <h3>Business Analysis</h3>
+          <p>
+            Skilled at converting business requirements into structured insights, operational improvements, data-backed recommendations, and scalable processes.
+          </p>
+        </div>
+
+        <div class="card glass">
+          <h3>Data & Communication</h3>
+          <p>
+            Strong presentation and storytelling skills with the ability to simplify complex systems, research findings, and product decisions for diverse stakeholders.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Experience & Projects</h2>
+
+      <div class="timeline">
+        <div class="timeline-item glass">
+          <div class="timeline-year">2025 — Present</div>
+          <div class="timeline-content">
+            <h3>AI Product & Analytics Projects</h3>
+            <h4>Independent Product Exploration</h4>
+            <ul>
+              <li>Designed AI-first product concepts focused on simplifying healthcare understanding and user decision-making.</li>
+              <li>Created structured product strategy documents, user flows, and PRDs for AI-powered platforms.</li>
+              <li>Conducted competitive analysis across digital health and AI assistant ecosystems.</li>
+              <li>Built portfolio-ready prototypes and pitch decks with a strong UX and storytelling focus.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item glass">
+          <div class="timeline-year">Case Study Work</div>
+          <div class="timeline-content">
+            <h3>Operations & Data Analysis Simulations</h3>
+            <h4>Business & Product Problem Solving</h4>
+            <ul>
+              <li>Worked on supply chain optimization, warehouse scoring models, and operational decision frameworks.</li>
+              <li>Analyzed datasets to extract actionable insights and create executive-ready visual summaries.</li>
+              <li>Translated analytical findings into presentation decks and strategic recommendations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Featured Product Concept</h2>
+
+      <div class="project-highlight">
+        <div class="project-card glass">
+          <div class="project-badge">AI + Healthcare</div>
+          <h3>MedClear</h3>
+          <p>
+            An AI-powered healthcare interpretation platform helping users understand complex lab reports before doctor consultations. Focused on reducing anxiety, improving clarity, and simplifying medical terminology.
+          </p>
+        </div>
+
+        <div class="project-card glass">
+          <div class="project-badge">Product Strategy</div>
+          <h3>PRDify</h3>
+          <p>
+            A concept platform that transforms raw startup or product ideas into structured, investor-ready Product Requirement Documents using guided AI workflows.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Core Skills</h2>
+
+      <div class="skill-grid">
+        <div class="skill-box glass">
+          <div class="skill-header">
+            <span>Product Thinking</span>
+            <span>92%</span>
+          </div>
+          <div class="progress"><span style="width:92%"></span></div>
+        </div>
+
+        <div class="skill-box glass">
+          <div class="skill-header">
+            <span>Business Analysis</span>
+            <span>90%</span>
+          </div>
+          <div class="progress"><span style="width:90%"></span></div>
+        </div>
+
+        <div class="skill-box glass">
+          <div class="skill-header">
+            <span>AI Tools & Prompting</span>
+            <span>94%</span>
+          </div>
+          <div class="progress"><span style="width:94%"></span></div>
+        </div>
+
+        <div class="skill-box glass">
+          <div class="skill-header">
+            <span>Data Storytelling</span>
+            <span>88%</span>
+          </div>
+          <div class="progress"><span style="width:88%"></span></div>
+        </div>
+
+        <div class="skill-box glass">
+          <div class="skill-header">
+            <span>Presentation Design</span>
+            <span>91%</span>
+          </div>
+          <div class="progress"><span style="width:91%"></span></div>
+        </div>
+
+        <div class="skill-box glass">
+          <div class="skill-header">
+            <span>Research & Insights</span>
+            <span>89%</span>
+          </div>
+          <div class="progress"><span style="width:89%"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Designed as a futuristic single-file interactive resume • Built with HTML, CSS & JavaScript</p>
+    </footer>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.glass');
+
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,245,196,0.12), rgba(15,26,36,0.78) 45%)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.background = 'rgba(15, 26, 36, 0.75)';
+      });
+    });
+
+    const reveal = () => {
+      const elements = document.querySelectorAll('.card, .timeline-item, .skill-box, .project-card');
+
+      elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        const visible = window.innerHeight - 100;
+
+        if (top < visible) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0px)';
+        }
+      });
+    };
+
+    document.querySelectorAll('.card, .timeline-item, .skill-box, .project-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.7s ease';
+    });
+
+    window.addEventListener('scroll', reveal);
+    reveal();
+  </script>
+</body>
+</html>
